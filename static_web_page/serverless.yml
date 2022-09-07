@@ -1,0 +1,75 @@
+service: static-web-page
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+resources:
+  Resources:
+    SimpleServerlessSite:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: simple-serverless-webpage
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: resume.html
+          ErrorDocument: error.html
+
+    # StaticSiteBucketPolicy:
+    #   Type: 'AWS::S3::BucketPolicy'
+    #   Properties:
+    #     Bucket: !Ref SimpleServerlessSite
+    #     PolicyDocument:
+    #       Version: 2012-10-17
+    #       Statement:
+    #         - Action:
+    #           - 's3:GetObject'
+    #           Effect: Allow
+    #           Resource: !Join
+    #             - ''
+    #             - - 'arn:aws:s3:::'
+    #               - !Ref SimpleServerlessSite
+    #               - /*
+    #           Principal: '*'
+
+      # Properties:
+      #   Bucket:
+      #     Ref: SimpleServerlessSite
+      #   PolicyDoucument:
+      #     Version: 2012-10-17
+      #     Statement:
+      #       - Sid: PublicReadGetObject
+      #         Effect: Allow
+      #         Principal: '*'
+      #         Action: 
+      #           -s3: GetObject
+      #         Resource:
+      #           Fn::Join: [
+      #             "",[
+      #               "arn:aws:s3:::",
+      #               {
+      #                 "Ref": SimpleServerlessSite
+      #               },
+      #               "/*"
+      #             ]
+      #           ]  
+
+  Outputs:
+    SimpleServerlessSiteBucketName:
+      Value:
+        Ref: SimpleServerlessSite
+    SimpleServerlessSiteURL:
+      Value:
+        Fn::GetAtt: [ "SimpleServerlessSite","WebsiteURL" ]
+
+
+plugins:
+  - serverless-s3bucket-sync
+
+custom:
+  syncS3Bucket:
+    - bucketRef: SimpleServerlessSite
+      localDir: build
+

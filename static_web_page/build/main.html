@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Pavan</title>
+<style>
+
+@media only screen and (max-width:620px)
+        {
+            .content{
+                align-content: center;
+                width: 100%;
+            }
+            
+        }
+    
+#myVideo {
+  position:fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+*{
+    box-sizing: border-box;
+}
+
+a:link, a:visited {
+  
+  color: rgba(218, 17, 245, 0.952);
+  padding: 60px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover  {
+  color: rgb(7, 71, 245);
+  text-shadow: 100px;
+  border: 1px solid rgb(240, 243, 245);
+}
+
+h3{
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+h3:hover{
+    letter-spacing: 1px;
+}
+h3:hover:after{
+    content: " >>";
+}
+h3:hover:before{
+    content: "<< ";
+}
+.content {
+  position:fixed;
+  bottom: 30%;
+  left: 35%;
+  right: 35%;
+  width: 100%;
+  padding: 20px;
+  
+}
+</style>
+</head>
+
+   
+<body>
+   
+        <video src="v2.mp4" id="myvideo" autoplay muted loop></video>
+
+    
+        <div class="content">
+            <a href="resume.html" target="_blank"><h3>Wellcome</h3>
+                <p>Click Me To Navigate to Main Page</p>
+            </a>
+        </div>
+</body>
+</html>
